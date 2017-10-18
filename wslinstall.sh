@@ -39,8 +39,8 @@ sudo apt-get install -y --force-yes apache2 libapache2-mod-auth-mysql
 echo "============="
 echo "Configuring apache2..."
 echo "============="
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
-echo "AcceptFilter http none" >> /etc/apache2/apache2.conf
+sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
+sudo echo "AcceptFilter http none" >> /etc/apache2/apache2.conf
 
 echo "============="
 echo "Installing PHP7.1 + mods"
