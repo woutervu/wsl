@@ -39,8 +39,8 @@ sudo apt-get install -y --force-yes apache2 libapache2-mod-auth-mysql
 echo "============="
 echo "Configuring apache2..."
 echo "============="
-sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
-sudo echo "AcceptFilter http none" >> /etc/apache2/apache2.conf
+echo "ServerName localhost" | sudo tee /etc/apache2/apache2.conf -a
+echo "AcceptFilter http none" | sudo tee /etc/apache2/apache2.conf -a
 
 echo "============="
 echo "Installing PHP7.1 + mods"
@@ -87,11 +87,11 @@ echo "> server: mysql-server-5.7"
 echo "> username: root (default)"
 echo "> password: secret"
 echo "============="
-sudo echo mysql-apt-config mysql-apt-config/repo-distro select ubuntu | debconf-set-selections
-sudo echo mysql-apt-config mysql-apt-config/repo-codename select trusty | debconf-set-selections
-sudo echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | debconf-set-selections
-sudo echo mysql-community-server mysql-community-server/root-pass password secret | debconf-set-selections
-sudo echo mysql-community-server mysql-community-server/re-root-pass password secret | debconf-set-selections
+echo mysql-apt-config mysql-apt-config/repo-distro select ubuntu | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/repo-codename select trusty | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | sudo debconf-set-selections
+echo mysql-community-server mysql-community-server/root-pass password secret | sudo debconf-set-selections
+echo mysql-community-server mysql-community-server/re-root-pass password secret | sudo debconf-set-selections
 sudo dpkg -i mysql-apt-config_0.6.0-1_all.deb
 
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys A4A9406876FCBD3C456770C88C718D3B5072E1F5
