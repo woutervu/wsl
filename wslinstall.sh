@@ -45,7 +45,13 @@ echo "AcceptFilter http none" | sudo tee /etc/apache2/apache2.conf -a
 echo "============="
 echo "Installing PHP7.1 + mods"
 echo "============="
-sudo apt-get install -y --force-yes php7.1 php7.1-mysql php7.1-zip php7.1-mbstring php7.1-dom php7.1-xml php7.1-mysql php7.1-gd php7.1-curl
+sudo apt-get install -y --force-yes php7.1 php7.1-fpm php7.1-mysql php7.1-zip php7.1-mbstring php7.1-dom php7.1-xml php7.1-mysql php7.1-gd php7.1-curl
+
+echo "============="
+echo "Configuring PHP7.1 + mods"
+echo "============="
+sudo a2enmod proxy_fcgi setenvif
+sudo a2enconf php7.1-fpm
 
 echo "============="
 echo "Installing Composer"
